@@ -1,0 +1,28 @@
+<!--
+ * @Author: BDFD
+ * @Date: 2022-02-04 12:42:47
+ * @LastEditTime: 2022-02-11 13:37:01
+ * @LastEditors: BDFD
+ * @Description: 
+ * @FilePath: \Heroku_Python_Template\templates\signup.html
+-->
+{% extends "./layout/base.html" %}
+{% block content %}
+<h2>Singup</h2>
+<form action="" method="post">
+    <p>
+        {{ form.username.label }}<br />
+        {{ form.username(size=20) }}
+    </p>
+    <p>
+        {{ form.password.label }}<br />
+        {{ form.password(size=20) }}
+    </p>
+    <p>
+        {{ form.submit() }}
+    </p>
+</form>
+
+<a href="/">Back to Index/Home</a>
+
+{% endblock %}

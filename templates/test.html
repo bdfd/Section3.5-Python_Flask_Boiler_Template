@@ -1,0 +1,43 @@
+<!--
+ * @Author: BDFD
+ * @Date: 2022-03-04 11:22:01
+ * @LastEditTime: 2022-03-04 12:25:52
+ * @LastEditors: BDFD
+ * @Description: 
+ * @FilePath: \Heroku_Python_Template\templates\test.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Page</title>
+    <link rel="stylesheet" href="">
+</head>
+
+<body>
+    <h1>Hello World! This is Test Page and Msg From BDFD!</h1>
+    <p>{{author}}</p>
+    <a href="">hello world</a>
+    <div>
+        {% for x in range(10) %}
+        <ul>
+            {% if x % 2 == 1 %}
+            <li>{{x}}</li>
+            {% endif %}
+        </ul>
+        <p></p>
+        {% endfor %}
+        <p>Hello</p>
+    </div>
+    <div>
+        {% for x in contents %}
+        <p>{{x}}</p>
+        {% endfor %}
+    </div>
+    <a href="/">Back to Index/Home Page</a>
+</body>
+
+</html>

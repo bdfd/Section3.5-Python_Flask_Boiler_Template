@@ -1,0 +1,28 @@
+<!--
+ * @Author: BDFD
+ * @Date: 2022-02-04 12:42:47
+ * @LastEditTime: 2022-02-11 13:34:41
+ * @LastEditors: BDFD
+ * @Description: 
+ * @FilePath: \Heroku_Python_Template\templates\blog.html
+-->
+{% extends "./layout/base.html" %}
+{% block content %}
+<h2>Blog Page</h2>
+<p>Hello Msg From {{ author }}</p>
+
+{% if sunny %}
+<p>Today is sunny</p>
+{% else %}
+<p>Today is rainy</p>
+{% endif %}
+<div>
+    {% for post in posts %}
+    <h2>{{post.title}}</h2>
+    <h3>{{post.author}}</h3>
+    {% endfor %}
+</div>
+
+<a href="/">Back to Index/Home</a>
+
+{% endblock %}

@@ -1,0 +1,42 @@
+<!--
+ * @Author: BDFD
+ * @Date: 2022-02-11 13:51:04
+ * @LastEditTime: 2022-02-11 13:58:29
+ * @LastEditors: BDFD
+ * @Description: 
+ * @FilePath: \Heroku_Python_Template\templates\function\login\login.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+</head>
+
+<body>
+    <form method="post" action="/login/validate">
+        <table>
+            <tr>
+                <td>Email</td>
+                <td><input type='email' name='email'></td>
+            </tr>
+            <tr>
+                <td>Password</td>
+                <td><input type='password' name='password'></td>
+            </tr>
+            <tr>
+                <td><input type="submit" value="Submit"></td>
+            </tr>
+        </table>
+        <p>
+            test email address: test@gmail.com<br />
+            test email password: test<br />
+            if not input as follow it will redirect to login page
+        </p>
+    </form>
+
+    <a href="/">Back to Index/Home</a>
+</body>
+
+</html>

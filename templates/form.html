@@ -1,0 +1,26 @@
+<!--
+ * @Date         : 2022-08-02 13:59:43
+ * @Author       : BDFD,bdfd2005@gmail.com
+ * @Github       : https://github.com/bdfd
+ * @LastEditTime : 2022-08-05 13:06:14
+ * @LastEditors  : BDFD
+ * @Description  : 
+ * @FilePath     : \templates\form.html
+ * Copyright (c) 2022 by BDFD, All Rights Reserved. 
+-->
+{% extends 'base.html'%}
+{% block title %}
+Thanks You For Subscribe...
+{% endblock %}
+{% block content %}
+<div class="container">
+  <h2>Thanks {{first_name, last_name}} For Subscribe...</h2>
+  <small>Please Confirm Your Information</small>
+  <br /><br />
+  <ul>
+    {% for subscribe in subscribes %}
+    <li>{{subscribe}}</li>
+    {% endfor %}
+  </ul>
+</div>
+{% endblock %}

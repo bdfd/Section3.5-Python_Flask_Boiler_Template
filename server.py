@@ -2,7 +2,7 @@
 Date         : 2022-08-02 15:04:56
 Author       : BDFD,bdfd2005@gmail.com
 Github       : https://github.com/bdfd
-LastEditTime : 2022-08-17 14:47:50
+LastEditTime : 2022-08-17 15:42:11
 LastEditors  : BDFD
 Description  : 
 FilePath     : \server.py
@@ -16,8 +16,8 @@ from email.message import EmailMessage
 import os
 
 app = Flask(__name__)
-email_sender = 'lejuan.jasiel@gmail.com'
-email_password = 'tebsqtbdgnsfjeqs'
+email_sender = 'customerservice@diligentgroup.ca'
+email_password = 'RQG@&cLQAHS+'
 
 subscribes = []
 
@@ -50,9 +50,10 @@ def form():
       email=email)
 
   # Set the subject and body of the email
-  subject = f'Hello, {first_name},{last_name}'
-  body = """
-  hello msg from lejuan
+  subject = f'Diligent Group'
+  body = f"""
+  Hello, {first_name},{last_name}
+  This email is regarding the usage of Diligent Management software
   """
 
   em = EmailMessage()
@@ -65,7 +66,7 @@ def form():
   context = ssl.create_default_context()
 
   # Log in and send the email
-  with smtplib.SMTP_SSL('smtp.gmail.com', 465, context=context) as smtp:
+  with smtplib.SMTP_SSL('mail.diligentgroup.ca', 465, context=context) as smtp:
       smtp.login(email_sender, email_password)
       smtp.sendmail(email_sender, email, em.as_string())
 

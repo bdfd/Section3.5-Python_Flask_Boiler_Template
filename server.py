@@ -2,7 +2,7 @@
 Date         : 2022-08-02 15:04:56
 Author       : BDFD,bdfd2005@gmail.com
 Github       : https://github.com/bdfd
-LastEditTime : 2022-08-17 15:42:11
+LastEditTime : 2022-08-18 14:01:39
 LastEditors  : BDFD
 Description  : 
 FilePath     : \server.py
@@ -13,7 +13,8 @@ from flask import Flask, render_template, request
 import smtplib
 import ssl
 from email.message import EmailMessage
-import os
+from flask_sqlalchemy import SQLAlchemy
+from datetime import datetime
 
 app = Flask(__name__)
 email_sender = 'customerservice@diligentgroup.ca'

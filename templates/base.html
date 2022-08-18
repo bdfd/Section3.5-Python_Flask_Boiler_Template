@@ -2,7 +2,7 @@
  * @Date         : 2022-08-04 16:26:00
  * @Author       : BDFD,bdfd2005@gmail.com
  * @Github       : https://github.com/bdfd
- * @LastEditTime : 2022-08-05 11:51:03
+ * @LastEditTime : 2022-08-17 18:16:39
  * @LastEditors  : BDFD
  * @Description  : 
  * @FilePath     : \templates\base.html
@@ -23,6 +23,8 @@
         rel="stylesheet"
         integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx"
         crossorigin="anonymous">
+    <link href="{{ url_for('static',filename='css/style.css') }}"
+        rel="stylesheet">
     <title>
         {% block title %}
         BDFD Portfolio
@@ -31,7 +33,7 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg bg-light">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
             <a class="navbar-brand" href="/">BDFD</a>
             <button class="navbar-toggler" type="button"

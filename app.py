@@ -2,7 +2,7 @@
 Date         : 2022-08-02 15:04:56
 Author       : BDFD,bdfd2005@gmail.com
 Github       : https://github.com/bdfd
-LastEditTime : 2022-08-18 16:25:04
+LastEditTime : 2022-08-18 16:36:49
 LastEditors  : BDFD
 Description  : 
 FilePath     : \app.py
@@ -75,6 +75,16 @@ def update(id):
       return "There was a problem when updating that name..."
   else:
     return render_template('updatefriends.html',friend_to_update=friend_to_update)
+
+@app.route('/delete/<int:id>')
+def delete(id):
+    friend_to_delete = Friends.query.get_or_404(id)
+    try:
+      db.session.delete(friend_to_delete)
+      db.session.commit()
+      return redirect('/friends')
+    except:
+      return "There was a problem deleting that friend"
 
 @app.route('/subscribe')
 def subscribe():

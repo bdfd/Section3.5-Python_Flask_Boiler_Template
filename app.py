@@ -2,7 +2,7 @@
 Date         : 2022-08-02 15:04:56
 Author       : BDFD,bdfd2005@gmail.com
 Github       : https://github.com/bdfd
-LastEditTime : 2022-08-18 16:06:51
+LastEditTime : 2022-08-18 16:25:04
 LastEditors  : BDFD
 Description  : 
 FilePath     : \app.py
@@ -62,6 +62,19 @@ def friends():
   else:
     friends = Friends.query.order_by(Friends.date_created)
     return render_template('friends.html', friends=friends)
+
+@app.route('/update/<int:id>', methods=['POST','GET'])
+def update(id):
+  friend_to_update = Friends.query.get_or_404(id)
+  if request.method == 'POST':
+    friend_to_update.name = request.form['name']
+    try:
+      db.session.commit()
+      return redirect('/friends')
+    except:
+      return "There was a problem when updating that name..."
+  else:
+    return render_template('updatefriends.html',friend_to_update=friend_to_update)
 
 @app.route('/subscribe')
 def subscribe():

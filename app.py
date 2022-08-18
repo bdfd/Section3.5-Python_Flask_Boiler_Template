@@ -2,14 +2,14 @@
 Date         : 2022-08-02 15:04:56
 Author       : BDFD,bdfd2005@gmail.com
 Github       : https://github.com/bdfd
-LastEditTime : 2022-08-18 14:01:39
+LastEditTime : 2022-08-18 16:06:51
 LastEditors  : BDFD
 Description  : 
-FilePath     : \server.py
+FilePath     : \app.py
 Copyright (c) 2022 by BDFD, All Rights Reserved. 
 '''
 # from requests import request
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect
 import smtplib
 import ssl
 from email.message import EmailMessage
@@ -19,6 +19,22 @@ from datetime import datetime
 app = Flask(__name__)
 email_sender = 'customerservice@diligentgroup.ca'
 email_password = 'RQG@&cLQAHS+'
+app.config['SQLALCHEMY_DATABASE_URI']= 'sqlite:///friends.db'
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS']= False
+
+# Initialize the database
+db = SQLAlchemy(app)
+
+# Create a db Model
+class Friends(db.Model):
+  id = db.Column(db.Integer, primary_key=True)
+  name = db.Column(db.String(200), nullable=False)
+  date_created = db.Column(db.DateTime, default=datetime.utcnow)
+  
+  #Create a function to return a string when we add something
+  def __repr__(self):
+    return '<Name %r>' % self.id
+
 
 subscribes = []
 
@@ -30,6 +46,22 @@ def index():
 def about():
   names = ['John','Mary','Wes','Sally']
   return render_template('about.html', names=names)
+
+@app.route('/friends', methods=['POST','GET'])
+def friends():
+  if request.method == 'POST':
+    friend_name = request.form['name']
+    new_friend = Friends(name=friend_name)
+    # Push to Database
+    try:
+      db.session.add(new_friend)
+      db.session.commit()
+      return redirect('/friends')
+    except:
+      return 'There was an error adding your friends...'
+  else:
+    friends = Friends.query.order_by(Friends.date_created)
+    return render_template('friends.html', friends=friends)
 
 @app.route('/subscribe')
 def subscribe():

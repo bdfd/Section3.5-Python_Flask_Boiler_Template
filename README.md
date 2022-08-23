@@ -12,7 +12,7 @@
 ## Document
 
 - Install dependencies using python package manager: `pip install -r requirements.txt `
-- Start python with server file : `python server.py`
+- Start python with server file : `python app.py`
 - Tune to url: `http://localhost:5000`
 
 All boilerplate code managed by flask framework. Routes are defined in server file, static view pages are in templates folder. I have implemented partials concept using HTML. Css and Javascript files are stored in static folder.
